@@ -1,8 +1,10 @@
 import { FaShareAlt, FaRegEye } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const NewsCard = (props = {}) => {
   const { news } = props || {};
+  
 
   return (
     <div className=" p-4 bg-white rounded-lg shadow-md">
@@ -16,6 +18,8 @@ const NewsCard = (props = {}) => {
         <div>
           <p className="font-semibold">{news.author.name}</p>
           <p className="text-sm text-gray-500">{news.author.published_date}</p>
+  
+          
         </div>
         <div className="ml-auto">
           <FaShareAlt className="text-gray-600" />
@@ -35,7 +39,10 @@ const NewsCard = (props = {}) => {
       {/* Details */}
       <p className="text-gray-700 text-sm mb-4">
         {news.details.slice(0, 150)}...{" "}
+        <Link 
+        to={`/news/${news._id}}`}>
         <span className="text-primary">Read More</span>
+        </Link>
       </p>
 
       {/* Ratings and Views */}
